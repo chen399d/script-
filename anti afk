@@ -1,0 +1,58 @@
+print"waiting..."
+wait(2)
+local Players = game:GetService("Players")
+local StarterGui = game:GetService("StarterGui")
+local properties = {
+    Color = Color3.new(1, 1, 1),
+    Font = Enum.Font.SourceSansItalic,
+    TextSize = 16
+ } 
+local properties = {Color = Color3.new(1, 1, 0),TextSize =20}
+   properties.Text = "Script By: TSETING_0131"
+StarterGui:SetCore("ChatMakeSystemMessage", properties)
+StarterGui:SetCore("SendNotification", {
+    Title = "Script By: TSETING_0131",
+    Text = "正在載入腳本...."
+})
+local properties = {Color = Color3.new(1, 0.41, 0.70),TextSize =20}
+   properties.Text = "正在載入腳本...."
+StarterGui:SetCore("ChatMakeSystemMessage", properties)
+wait(3)
+StarterGui:SetCore("SendNotification", 
+{
+    Title = "Script By: TSETING_0131",
+    Text = "腳本載入完畢"
+})
+local properties = {TextSize =20}
+   properties.Text = "腳本載入完畢"
+StarterGui:SetCore("ChatMakeSystemMessage", properties)
+StarterGui:SetCore("SendNotification", 
+{
+    Title = "Script By: TSETING_0131",
+    Text = "歡迎使用 TDS ANTI AFK SCRIPT"
+})
+   properties.Text = "防AFK腳本已開啟"
+StarterGui:SetCore("ChatMakeSystemMessage", properties)
+    -- UI 介面的时间（60秒）
+    local uiDuration = 60
+
+    -- 显示 UI 介面
+    StarterGui:SetCore("SendNotification", {
+        Title = "防20分鐘AFK",
+        Text = "20分鐘防踢已開啟",
+        Duration = uiDuration
+    })
+
+    -- 防止长时间不活动的脚本
+    local function preventIdle()
+        local VirtualUser = game:GetService("VirtualUser")
+        while true do
+            VirtualUser:CaptureController()
+            VirtualUser:ClickButton2(Vector2.new())
+            wait(10) -- 每10秒执行一次，以确保不被踢出
+        end
+    end
+
+    -- 啟動防止AFK的脚本
+    coroutine.wrap(preventIdle)()
+
